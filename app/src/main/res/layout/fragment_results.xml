@@ -1,0 +1,186 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.gdt.speedtest.features.main.fragment.result.ResultsFragment">
+
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:padding="1dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/layoutBannerAds"
+        android:layout_width="wrap_content"
+        android:minHeight="70dp"
+        android:layout_height="wrap_content"
+        ></RelativeLayout>
+
+    <LinearLayout
+        android:background="#2e3641"
+        android:id="@+id/layout_title"
+        android:layout_below="@id/layoutBannerAds"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_60sdp"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:fontFamily="@font/robotoregular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Network"
+                android:alpha="0.7"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:fontFamily="@font/robotoregular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time"
+                android:alpha="0.7"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/iv_ping"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:fontFamily="@font/robotoregular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ping"
+                android:alpha="0.7"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/iv_ping"
+                android:layout_width="@dimen/_14sdp"
+                android:layout_height="@dimen/_14sdp"
+                app:srcCompat="@drawable/ic_ping_record"
+                android:layout_marginTop="10dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_toRightOf="@id/iv_download"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_centerVertical="true"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:fontFamily="@font/robotoregular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/download"
+                android:alpha="0.7"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/iv_download"
+                android:layout_width="@dimen/_14sdp"
+                android:layout_height="@dimen/_14sdp"
+                app:srcCompat="@drawable/ic_download_record"
+                android:layout_marginTop="10dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_toRightOf="@id/iv_upload"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:fontFamily="@font/robotoregular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/upload"
+                android:alpha="0.7"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/iv_upload"
+                android:layout_width="@dimen/_14sdp"
+                android:layout_height="@dimen/_14sdp"
+                android:layout_marginTop="10dp"
+                app:srcCompat="@drawable/ic_upload_record"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/layout_title"
+        android:descendantFocusability="blocksDescendants"
+        android:id="@+id/list_results"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <TextView
+        android:fontFamily="@font/robotoregular"
+        android:id="@+id/txt_nothing"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textSize="@dimen/_12sdp"
+        android:text="You don't have any Speedtest result yet!"
+        android:textColor="#fafafa"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/_18sdp"
+        android:layout_marginRight="@dimen/_18sdp"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

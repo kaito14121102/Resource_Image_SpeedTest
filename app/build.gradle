@@ -1,0 +1,226 @@
+apply plugin: 'com.android.application'
+
+apply from: '../config/quality/quality.gradle'
+apply from: '../config/jacoco.gradle'
+apply plugin: 'org.greenrobot.greendao'
+//apply plugin: 'io.fabric'
+
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion '29.0.3'
+    dexOptions {
+        maxProcessCount 4
+        preDexLibraries false
+        javaMaxHeapSize "4g"
+    }
+
+    def code = 1
+    def versionPropsFile = file('version.properties')
+
+    /*Setting default value for versionBuild which is the last incremented value stored in the file */
+    if (versionPropsFile.canRead()) {
+        Properties versionProps = new Properties()
+        versionProps.load(new FileInputStream(versionPropsFile))
+        code = versionProps['VERSION_CODE'].toInteger()
+
+        versionProps['VERSION_CODE'] = code.toString()
+        versionProps.store(versionPropsFile.newWriter(), null)
+    } else {
+        throw new GradleException("Could not read version.properties!")
+    }
+
+    /*Wrapping inside a method avoids auto incrementing on every gradle task run. Now it runs only when we build apk*/
+    ext.autoIncrementVersionCodeNumber = {
+        if (versionPropsFile.canRead()) {
+            Properties versionProps = new Properties()
+            versionProps.load(new FileInputStream(versionPropsFile))
+            code = versionProps['VERSION_CODE'].toInteger() + 1
+            versionProps['VERSION_CODE'] = code.toString()
+            versionProps.store(versionPropsFile.newWriter(), null)
+        } else {
+            throw new FileNotFoundException("Could not read version.properties!")
+        }
+    }
+
+    gradle.taskGraph.whenReady { taskGraph ->
+        if (taskGraph.hasTask("assembleRelease")) { /* when run release task */
+            autoIncrementVersionCodeNumber()
+        }
+    }
+    defaultConfig {
+        defaultPublishConfig 'debug'
+
+        applicationId "com.GDT.speedtest.internet"
+        minSdkVersion 19
+        targetSdkVersion 28
+        multiDexEnabled true
+        testInstrumentationRunner "com.vtool.speedtest.speedcheck.internet.runner.RxAndroidJUnitRunner"
+        versionCode 3
+        vectorDrawables.useSupportLibrary = true
+        // Major -> Millions, Minor -> Thousands, Bugfix -> Hundreds. E.g 1.3.72 == 1,003,072
+
+        versionName '1.0.3'
+        ndk {
+            abiFilters "armeabi-v7a", "x86", "x86_64", "arm64-v8a"
+        }
+    }
+
+    buildTypes {
+        // Use for release
+        release {
+            minifyEnabled false
+            shrinkResources false
+            useProguard false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        // Use for debug test
+        debug {
+            //Config sonarqube
+            testCoverageEnabled = true
+
+            minifyEnabled false
+            shrinkResources false
+            useProguard false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        def commonTestDir = 'src/commonTest/java'
+        test {
+            java.srcDir commonTestDir
+        }
+        androidTest {
+            java.srcDir commonTestDir
+        }
+    }
+
+    lintOptions {
+        textOutput "stdout"
+        textReport true
+        checkAllWarnings true
+        warningsAsErrors true
+        showAll true
+        explainIssues true
+        abortOnError true
+        ignoreWarnings false
+        checkReleaseBuilds true
+        htmlReport true
+        xmlReport true
+        lintConfig file("$projectDir/lint.xml")
+    }
+
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/license/LICENSE.base64.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/rxjava.properties'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    testOptions {
+        animationsDisabled = true
+        unitTests {
+            includeAndroidResources = true
+            returnDefaultValues = true
+            all {
+                jacoco {
+                    includeNoLocationClasses true
+                }
+                systemProperty 'robolectric.logging.enabled', 'true'
+                systemProperty 'robolectric.logging', 'stdout'
+                // Print test details in the terminal (or CI).
+                testLogging {
+                    events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+                    // Log out test results to console
+                    exceptionFormat 'full'
+                }
+            }
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def appId = variant.applicationId
+            def versionName = variant.versionName
+            def formattedDate = new Date().format('HH-mm-dd-MM-Y')
+            def newNameApk = output.outputFile.name
+
+            Properties versionProps = new Properties()
+            versionProps.load(new FileInputStream(versionPropsFile))
+            int versionCode = versionProps['VERSION_CODE'].toInteger()
+
+            if (variant.buildType.name == "release") {
+                versionCode = versionCode + 1
+                def nameFileApkDebug = appId + "_" + formattedDate + "_" + versionCode + "_" + versionName
+                newNameApk = newNameApk.replace("app-", nameFileApkDebug + "-")
+                outputFileName = newNameApk
+            } else {
+                def nameFileApkDebug = appId + "_" + formattedDate + "_" + versionCode + "_" + versionName
+                newNameApk = newNameApk.replace("app-", nameFileApkDebug + "-")
+                outputFileName = newNameApk
+            }
+        }
+    }
+}
+
+greendao {
+    targetGenDir 'src/main/java'
+}
+apply from: 'dependencies.gradle'
+
+dependencies {
+    implementation networkLibs
+    implementation rxJavaLibs
+    implementation otherLibs
+    implementation greenDaoLibs
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta3'
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
+    debugImplementation debugLibs
+    releaseImplementation releaseLibs
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.3.0-alpha02', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation 'androidx.multidex:multidex:2.0.1'
+    // APT dependencies
+    annotationProcessor annotationProcessorLibs
+    implementation 'com.google.code.gson:gson:2.8.5'
+//    implementation('com.crashlytics.sdk.android:crashlytics:2.9.5@aar') {
+//        transitive = true
+//    }
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+
+    implementation 'com.google.firebase:firebase-core:17.2.1'
+    //Banner adaptive
+    implementation 'com.google.android.gms:play-services-ads:18.2.0'
+
+    //Butterknife
+    implementation 'com.jakewharton:butterknife:10.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+
+    //Design
+    implementation 'com.android.support:design:27.1.1'
+    //Chart
+    implementation files('libs/achartengine-1.2.0.jar')
+
+//    Facebook SDK
+//    implementation 'com.facebook.android:facebook-android-sdk:5.1.0'
+    //in app purchase
+//    implementation 'com.android.billingclient:billing:1.1'
+    implementation 'com.airbnb.android:lottie:3.4.0'
+
+    // Add the Firebase SDK for Crashlytics.
+    implementation 'com.google.firebase:firebase-crashlytics:17.0.0-beta03'
+
+}
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+//com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true

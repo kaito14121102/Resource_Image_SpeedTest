@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="margin_left">10dp</dimen>
+    <dimen name="xmargin_left">20dp</dimen>
+    <dimen name="xmargin_right">20dp</dimen>
+    <dimen name="margin_top">10dp</dimen>
+    <dimen name="size_icon_share">70dp</dimen>
+    <dimen name="size_layout_share">90dp</dimen>
+    <dimen name="size_icon_speed">260dp</dimen>
+    <dimen name="margin_right">10dp</dimen>
+    <dimen name="xxmargin_bottom">30dp</dimen>
+    <dimen name="xmargin_bottom">20dp</dimen>
+    <dimen name="width_icon_speed">200dp</dimen>
+
+    <dimen name="padding_star_5dp">5dp</dimen>
+</resources>

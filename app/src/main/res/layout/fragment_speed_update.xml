@@ -1,0 +1,370 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_app"
+    tools:context="com.gdt.speedtest.features.main.fragment.speed.SpeedFragmentUpdate">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/layout_info_result"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_weight="3"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:background="@drawable/bg_app"
+            >
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <RelativeLayout
+                    android:id="@+id/layout_title_ping"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true">
+
+                    <ImageView
+                        android:id="@+id/img_ping"
+                        android:layout_width="@dimen/_23sdp"
+                        android:layout_height="@dimen/_23sdp"
+                        app:srcCompat="@drawable/ic_ping"
+                        android:layout_centerVertical="true"
+                        />
+
+                    <TextView
+                        android:fontFamily="@font/robotoregular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_toRightOf="@id/img_ping"
+                        android:text="PING"
+                        android:alpha="0.7"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:fontFamily="@font/robotoregular"
+                    android:id="@+id/txt_ping"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layout_title_ping"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text=""
+                    android:textStyle="bold"
+                    android:textColor="@color/color_blue"
+                    android:textSize="@dimen/_15sdp" />
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_below="@id/txt_ping"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Ms"
+                    android:textColor="#c2c2c2"
+                    android:textSize="@dimen/_12sdp" />
+                <LinearLayout
+                    android:layout_below="@id/txt_ping"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:id="@+id/chartPing"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <RelativeLayout
+                    android:id="@+id/layout_title_download"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true">
+
+                    <ImageView
+                        android:id="@+id/img_download"
+                        android:layout_width="@dimen/_23sdp"
+                        android:layout_height="@dimen/_23sdp"
+                        app:srcCompat="@drawable/ic_down_main"
+                        android:layout_centerVertical="true"
+                        />
+
+                    <TextView
+                        android:fontFamily="@font/robotoregular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_toRightOf="@id/img_download"
+                        android:text="DOWNLOAD"
+                        android:alpha="0.7"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:fontFamily="@font/robotoregular"
+                    android:id="@+id/txt_download"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layout_title_download"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text=""
+                    android:textStyle="bold"
+                    android:textColor="@color/color_blue"
+                    android:textSize="@dimen/_15sdp"
+                    android:visibility="invisible"
+                    />
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_below="@id/txt_download"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Mbps"
+                    android:textColor="#c2c2c2"
+                    android:textSize="@dimen/_12sdp" />
+                <LinearLayout
+                    android:layout_below="@id/txt_download"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:id="@+id/chartDownload"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <RelativeLayout
+                    android:id="@+id/layout_title_upload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true">
+
+                    <ImageView
+                        android:id="@+id/img_upload"
+                        android:layout_width="@dimen/_23sdp"
+                        android:layout_height="@dimen/_23sdp"
+                        app:srcCompat="@drawable/ic_upl_main"
+                        android:layout_centerVertical="true"
+                        />
+
+                    <TextView
+                        android:fontFamily="@font/robotoregular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_6sdp"
+                        android:layout_toRightOf="@id/img_upload"
+                        android:text="UPLOAD"
+                        android:alpha="0.7"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:fontFamily="@font/robotoregular"
+                    android:id="@+id/txt_upload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layout_title_upload"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text=""
+                    android:textStyle="bold"
+                    android:textColor="@color/color_blue"
+                    android:textSize="@dimen/_15sdp"
+                    android:visibility="invisible"
+                    />
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_below="@id/txt_upload"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Mbps"
+                    android:textColor="#c2c2c2"
+                    android:textSize="@dimen/_12sdp" />
+                <LinearLayout
+                    android:layout_below="@id/txt_upload"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:id="@+id/chartUpload"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_height="0dp"
+            android:layout_below="@id/layout_info_result"
+            android:layout_gravity="center_horizontal"
+            android:layout_above="@id/layout_wifi"
+            >
+
+            <ImageView
+                android:padding="@dimen/_20sdp"
+                android:id="@+id/img_speed_meter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                />
+
+            <ImageView
+                android:padding="@dimen/_20sdp"
+                android:id="@+id/img_needle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:lottie_loop="true"
+                android:visibility="invisible"
+                />
+
+            <RelativeLayout
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_130sdp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/pulsator"
+                >
+
+                <RelativeLayout
+                    android:id="@+id/llButton"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_38sdp"
+                    android:background="@drawable/bg_blue_radius_10_go"
+                    android:layout_alignParentBottom="true"
+                    >
+                    <Button
+                        android:layout_centerHorizontal="true"
+                        android:visibility="visible"
+                        android:id="@+id/btn_start"
+                        android:textSize="@dimen/_14sdp"
+                        android:text="Start"
+                        android:textAllCaps="false"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_app"
+                        android:fontFamily="@font/robotoregular"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        />
+                </RelativeLayout>
+                <TextView
+                    android:visibility="visible"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/txt_result_speed"
+                    android:textStyle="bold"
+                    android:textColor="@color/color_blue"
+                    android:textSize="@dimen/_22sdp"
+                    android:text="0.00"
+                    android:gravity="center"
+                    android:padding="@dimen/_5sdp"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/tvMps"
+                    android:layout_marginBottom="-5dp"
+                    android:fontFamily="@font/robotoregular"
+                    />
+
+                <TextView
+                    android:id="@+id/tvMps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Mbps"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:fontFamily="@font/robotoregular"
+                    android:textSize="10sp"
+                    android:drawablePadding="5dp"
+                    android:layout_above="@id/llButton"
+                    android:layout_marginBottom="5dp"
+                    />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_wifi"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_alignParentBottom="true"
+            >
+
+            <RelativeLayout
+                android:layout_centerVertical="true"
+                android:id="@+id/layout_network_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp">
+                <ImageView
+                    android:padding="@dimen/_4sdp"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/img_name_wifi"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp" />
+                <TextView
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:fontFamily="@font/robotoregular"
+                    android:textSize="12sp"
+                    android:text="@string/wifi"
+                    android:id="@+id/txt_name_wifi"
+                    android:layout_toRightOf="@id/img_name_wifi"
+                    android:layout_centerVertical="true"
+                    android:textColor="#00ebe3"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:id="@+id/img_next_wifi"
+                    android:padding="@dimen/_2sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/txt_name_wifi"
+                    android:src="@drawable/ic_next_speed"
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_height="@dimen/_12sdp" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

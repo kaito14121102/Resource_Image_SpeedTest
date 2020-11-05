@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="facebook_test_device">
+        <item>2a30f56e-a23e-4164-a083-fcf60e69f836</item>
+        <item>685e8a9e-6150-406f-afa7-f47f849ac326</item>
+        <item>120c3a0b-8e2b-4055-ada3-99f8d8ccd1d9</item>
+        <item>3f75fb0d-19f7-43c2-ab9e-45670ee2a3d4</item>
+        <item>f467b2f9-a163-431a-832f-10e8d3d0ee03</item>
+    </string-array>
+
+    <string-array name="google_test_device">
+        <item>FD38BCC56B40841274E464296457B8C6</item> //duy
+        <item>3112328D6B97FA498D854E4378C6BC6E</item>
+        <item>0B8597A47E659AA70D4801F5A57344B4</item>
+        <item>30137D5229B64792CE8B27E3A90E70CE</item>
+        <item>16FE516A84BF30516447E97D3874DA61</item>
+        <item>8115A74634CADA5D2872CEF10A1CD251</item>
+    </string-array>
+</resources>

@@ -1,0 +1,83 @@
+ext {
+    versions = [
+            support      : "27.1.1",
+            firebase     : '16.0.1',
+            okHttp       : "3.12.1",
+            retrofit     : '2.3.0',
+            dagger       : '2.14.1',
+            rxJava       : '2.1.5',
+            rxJavaAndroid: '2.0.2',
+            rxPermissions: '0.9.4@aar',
+            sqlbrite     : '1.1.2',
+            traceur      : '1.0.1',
+            stetho       : '1.5.0',
+            timber       : '4.5.1',
+            glide        : '4.4.0',
+            chuck        : '1.1.0',
+            leakcanary   : '1.5.4',
+            sherlock     : '1.0.4@aar',
+
+            espresso     : '3.0.1',
+            testRunner   : '1.0.1',
+            hamcrest     : '1.3',
+            restMock     : '0.2.2',
+            mockito      : '2.13.0',
+            junit        : '4.12',
+            robolectric  : '3.4.2',
+            assertj      : '1.2.0',
+            facebookSdk  : '[4,5)'
+    ]
+
+    rxJava = [
+            rxJava       : "io.reactivex.rxjava2:rxjava:$versions.rxJava",
+            rxAndroid    : "io.reactivex.rxjava2:rxandroid:$versions.rxJavaAndroid"
+    ]
+
+    retrofit = [
+            retrofit     : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+            retrofitGson : "com.squareup.retrofit2:converter-gson:$versions.retrofit",
+            rxAdapter    : "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit",
+            gsonConverter: "com.squareup.retrofit2:converter-gson:$versions.retrofit",
+            sqlbrite     : "com.squareup.sqlbrite:sqlbrite:$versions.sqlbrite"
+    ]
+
+    okHttp = [
+            logger: "com.squareup.okhttp3:logging-interceptor:$versions.okHttp",
+            okhttp: "com.squareup.okhttp3:okhttp:$versions.okHttp",
+            stetho: "com.facebook.stetho:stetho-okhttp3:$versions.stetho"
+    ]
+
+    onlyDebug = [
+            chuck: "com.readystatesoftware.chuck:library:$versions.chuck"
+    ]
+
+    onlyRelease = [
+            chuckNoOp   : "com.readystatesoftware.chuck:library-no-op:$versions.chuck",
+    ]
+
+    database = [
+            provided    : 'javax.annotation:jsr250-api:1.0',
+            javax_inject: 'javax.inject:javax.inject:1',
+            sqlCirpher  : 'net.zetetic:android-database-sqlcipher:3.5.7',
+            guava       : 'com.google.guava:guava:20.0',
+            greenDao    : 'org.greenrobot:greendao:3.2.2',
+            rxbinding   : 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+    ]
+    greenDaoLibs = database.values()
+
+    dagger = "com.google.dagger:dagger:$versions.dagger"
+    daggerCompiler = "com.google.dagger:dagger-compiler:$versions.dagger"
+
+
+    glide = "com.github.bumptech.glide:glide:$versions.glide"
+    glideCompiler = "com.github.bumptech.glide:compiler:$versions.glide"
+    glideOkhttp = "com.github.bumptech.glide:okhttp3-integration:$versions.glide"
+
+    networkLibs = retrofit.values() + okHttp.values()
+    rxJavaLibs = rxJava.values()
+    otherLibs = [dagger, glide, glideOkhttp]
+
+    debugLibs = onlyDebug.values()
+    releaseLibs = onlyRelease.values()
+    annotationProcessorLibs = [ daggerCompiler, glideCompiler]
+}

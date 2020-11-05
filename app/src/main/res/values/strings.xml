@@ -1,0 +1,83 @@
+<resources>
+
+    //ID REAL
+<!--    <string name="small_banner_screen_main">ca-app-pub-6703215286487760/8166866762</string>-->
+<!--    <string name="banner_screen_complete">ca-app-pub-6703215286487760/4227621759</string>-->
+<!--    <string name="banner_screen_detail">ca-app-pub-6703215286487760/5349131732</string>-->
+
+<!--    <string name="full_screen_test_success">ca-app-pub-6703215286487760/5299006753</string>-->
+
+
+    //ID TEST
+    <string name="small_banner_screen_main">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="banner_screen_complete">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="banner_screen_detail">ca-app-pub-3940256099942544/6300978111</string>
+
+    <string name="full_screen_test_success">ca-app-pub-3940256099942544/1033173712</string>
+
+
+    <string name="app_name">Internet Speed Test</string>
+    <string name="splash_title">SPEEDTEST MASTER</string>
+    <string name="splash_detail">Expert in managing network</string>
+    <string name="speed">Test</string>
+    <string name="result">History</string>
+    <string name="setting">Settings</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="go">GO</string>
+    <string name="mpbs">Mpbs</string>
+    <string name="type">Type</string>
+    <string name="time">Date</string>
+    <string name="download">Download</string>
+    <string name="upload">Upload</string>
+    <string name="ping">Ping</string>
+    <string name="ms">ms</string>
+    <string name="rate">Rate App</string>
+    <string name="complete">Complete</string>
+
+    <string name="policy">Privacy Policy</string>
+    <string name="share_screen">Share</string>
+    <string name="exiting">Exiting...</string>
+    <string name="pressDoubleClick">You must double click to exit app</string>
+    <string name="facebook_not_install">You have not installed app yet!</string>
+
+    <string name="facebook_pref">FBAdPrefs</string>
+    <string name="device_id_hash">deviceIdHash</string>
+    <string name="custom_device_hash">nkp</string>
+    <string name="edit_date">Please check your divice\'s date, time to test! </string>
+
+    <string name="lbl_rate">Rate</string>
+    <string name="lbl_later">Later</string>
+    <string name="title_rate_app">If you enjoy using this app, would you mind taking a moment to rate it?. Thank you for your support!</string>
+    <string name="sms_thank_you_rate">Thank you very much</string>
+
+    <string name="ping_ms">ms</string>
+    <string name="mbps">Mbps</string>
+    <string name="speed_test">SPEEDTEST</string>
+    <string name="share_title">SHARE</string>
+    <string name="default_rate">0 Mbps</string>
+    <string name="default_ping">0 ms</string>
+    <string name="share_app">Share App</string>
+    <string name="not_connect_network">Internet not connect !</string>
+    <string name="default_speed_title">"0"</string>
+    <string name="allow_permission_alert">Please allow permission to save screenshot</string>
+    <string name="load_api_message">Connecting...</string>
+    <string name="api_load_faild">Check the network connection</string>
+
+    <string name="twitter_not_install"> Twitter not install!</string>
+    <string name="whatsapp_not_install"> WhatsApp not install!</string>
+    <string name="wifi"><u>Wifi</u></string>
+    <string name="our_more_app"><u>More App</u></string>
+    <string name="remove_all_ads">• <b>Remove all ads</b> in application</string>
+    <string name="remove_all_ads_except">• <b>Remove all ads</b> in application\n(EXCEPT FOR REWARDED ADS)</string>
+    <string name="unlimited_test">• <b>Unlimited</b> test</string>
+    <string name="watch_a_video_to_get_free_test_3_times">Watch the rewarded advertisement to get 4 times <b>FREE test</b>!</string>
+    <string name="mail_subject">Report an error of the application(Speed test)</string>
+    <string name="mail_content"></string>
+    <string name="buy_once_for_a_lifetime_usage">• Buy once for a <b>lifetime usage</b></string>
+    <string name="remove_splash_screen">• <b>Remove splash</b> screen</string>
+    <string name="text_guess_video">Download 10 min SD video:</string>
+    <string name="text_guess_image">Send one HD picture:</string>
+</resources>
